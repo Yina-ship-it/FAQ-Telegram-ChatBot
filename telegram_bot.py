@@ -22,7 +22,7 @@ class TelegramBot:
                 self.bot.send_message(message.chat.id, answer)
             except Exception as e:
                 print(e)
-                self.bot.send_message(message.chat.id, "Я вас немного не понял, переформулируйте свой впорос, либо уточните свой вопрос в онлайн чате у нас на сайте")
+                self.bot.send_message(message.chat.id, "Я немного не понял вас. Пожалуйста, переформулируйте свой вопрос или уточните его в нашем онлайн-чате на сайте.")
 
     def start(self):
         self.bot.polling()
@@ -51,7 +51,7 @@ class TelegramBot:
         answerInf = nlp(question=question, context=self.context)
         print(answerInf)
         if answerInf["score"] < 0.10:
-            raise LowConfidenceError(answerInf["score"]) 
+            raise LowConfidenceError(answerInf["score"])
         for key in self.answers:
             if answerInf["start"] + 1 in key:
                 return self.answers[key]

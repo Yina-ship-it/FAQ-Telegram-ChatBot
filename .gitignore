@@ -161,3 +161,4 @@ cython_debug/
 
 myenv/
 neural_network_model/
+resources/telegram_token.txt
